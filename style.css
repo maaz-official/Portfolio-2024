@@ -1,0 +1,780 @@
+/* Importing Google Fonts "Poppins" and "Dancing Script" */
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script:400,700");
+
+/* General styles for the body */
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #fff;
+    background-color: #1f2029;
+    overflow: hidden;
+    height: 100vh;
+    transition: all 300ms linear;
+    perspective: 800px;
+}
+
+/* General styles for anchor tags */
+a {
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Selection highlight styles */
+::selection {
+    color: #c4c3ca;
+    background-color: #000;
+}
+
+::-moz-selection {
+    color: #c4c3ca;
+    background-color: #000;
+}
+
+/* Cursor styles for different cursor elements */
+.cursor, .cursor2, .cursor3 {
+    position: fixed;
+    border-radius: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    pointer-events: none;
+    left: -100px;
+    top: 50%;
+    mix-blend-mode: difference;
+    transition: all 300ms linear;
+}
+
+.cursor {
+    background-color: #fff;
+    height: 0;
+    width: 0;
+    z-index: 99999;
+}
+
+.cursor2, .cursor3 {
+    height: 36px;
+    width: 36px;
+    z-index: 99998;
+    transition: all 0.3s ease-out;
+}
+
+.cursor2.hover, .cursor3.hover {
+    transform: scale(2) translateX(-25%) translateY(-25%);
+    border: none;
+}
+
+.cursor2 {
+    border: 2px solid #fff;
+}
+
+.cursor2.hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: transparent;
+}
+
+/* Hide cursors on smaller screens */
+@media screen and (max-width: 1200px) {
+    .cursor, .cursor2, .cursor3 {
+        display: none;
+    }
+}
+
+/* Hero section styles */
+.hero-section {
+    position: relative;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    height: 100vh;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1) rotateX(0);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    transition: all 300ms linear;
+    transition-delay: 400ms;
+    transform-origin: center top;
+}
+
+.hero-section h1 {
+    color: #fff;
+    font-size: 5vw;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.hero-section .dancing {
+    font-family: "Dancing Script", cursive;
+    letter-spacing: 1px;
+    color: #866baf;
+    font-size: 26px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+/* Adjust font size for smaller screens */
+@media screen and (max-width: 580px) {
+    .hero-section .dancing {
+        font-size: 18px;
+    }
+}
+
+.hero-section p {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.hero-section p span {
+    margin-left: 15px;
+    margin-right: 15px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding-bottom: 35px;
+}
+
+.hero-section p span:before {
+    position: absolute;
+    content: "";
+    bottom: 10px;
+    left: 50%;
+    height: 30px;
+    width: 30px;
+    margin-left: -15px;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px 30px;
+    background-image: url("http://www.ivang-design.com/svg-load/portfolio/down.svg");
+    opacity: 0.2;
+    transition: all 200ms linear;
+}
+
+.hero-section p span:hover:before {
+    opacity: 1;
+    bottom: 5px;
+}
+
+/* Styles for body classes to scale the hero section */
+body.about-on .hero-section,
+body.contact-on .hero-section,
+body.travel-on .hero-section,
+body.wildlife-on .hero-section,
+body.nature-on .hero-section {
+    transform: scale(0.75);
+    transition-delay: 0ms;
+}
+
+/* About text link styles */
+.about-text {
+    position: absolute;
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    top: 50%;
+    left: 40px;
+    cursor: pointer;
+    z-index: 2;
+    writing-mode: vertical-lr;
+    transform: translateY(-50%);
+    transition: all 200ms linear;
+}
+
+.about-text:before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: -25px;
+    height: 30px;
+    width: 30px;
+    margin-top: -15px;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px 30px;
+    background-image: url("http://www.ivang-design.com/svg-load/portfolio/left.svg");
+    opacity: 0.2;
+    transition: all 200ms linear;
+}
+
+.about-text:hover:before {
+    opacity: 1;
+    left: -30px;
+}
+
+/* About section styles */
+.about-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    height: 100vh;
+    background-color: rgba(31, 32, 41, 1);
+    transform: translateX(-100%);
+    transition: all 300ms linear;
+    z-index: 10;
+}
+
+body.about-on .about-section {
+    transform: translateX(0);
+    transition-delay: 400ms;
+}
+
+/* Close button for about section */
+.about-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    display: block;
+    overflow: hidden;
+    height: 30px;
+    transition: all 200ms linear;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 36px 36px;
+    background-image: url("http://www.ivang-design.com/svg-load/portfolio/close.svg");
+    cursor: pointer;
+    z-index: 11;
+}
+
+.about-close:hover {
+    transform: rotate(90deg);
+}
+
+/* Centering content in about section */
+.section-center {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+/* Image styles for about section */
+.about-section img {
+    width: 160px;
+    height: 154px;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-section p span {
+    font-family: "Dancing Script", cursive;
+    letter-spacing: 1px;
+    color: #866baf;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+/* Contact text link styles */
+.contact-text {
+    position: absolute;
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    top: 50%;
+    right: 40px;
+    cursor: pointer;
+    z-index: 2;
+    writing-mode: vertical-lr;
+    transform: translateY(-50%) rotate(180deg);
+    transition: all 200ms linear;
+}
+
+.contact-text:before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: -25px;
+    height: 30px;
+    width: 30px;
+    margin-top: -15px;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px 30px;
+    background-image: url("http://www.ivang-design.com/svg-load/portfolio/left.svg");
+    opacity: 0.2;
+    transition: all 200ms linear;
+}
+
+.contact-text:hover:before {
+    opacity: 1;
+    left: -30px;
+}
+
+/* Contact section styles */
+.contact-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    height: 100vh;
+    background-color: rgba(31, 32, 41, 1);
+    transform: translateX(100%);
+    transition: all 300ms linear;
+    z-index: 10;
+}
+
+body.contact-on .contact-section {
+    transform: translateX(0);
+    transition-delay: 400ms;
+}
+
+/* Close button for contact section */
+.contact-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    display: block;
+    overflow: hidden;
+    height: 30px;
+    transition: all 200ms linear;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 36px 36px;
+    background-image: url("http://www.ivang-design.com/svg-load/portfolio/close.svg");
+    cursor: pointer;
+    z-index: 11;
+}
+
+.contact-close:hover {
+    transform: rotate(90deg);
+}
+
+/* Contact section anchor styles */
+.contact-section a {
+    margin: 0 auto;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #fff;
+    display: inline-block;
+}
+
+/* Social links in contact section */
+.contact-section .social a {
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #866baf;
+}
+
+/* Adjust font sizes for smaller screens in contact section */
+@media screen and (max-width: 580px) {
+    .contact-section a {
+        font-size: 17px;
+    }
+
+    .contact-section .social a {
+        margin-left: 3px;
+        margin-right: 3px;
+        font-size: 13px;
+        letter-spacing: 0;
+    }
+}
+
+/* Styles for additional sections like travel, wildlife, and nature */
+.travel-section,
+.wildlife-section,
+.nature-section {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    padding: 100px 0;
+    width: 100%;
+    height: 100vh;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(31, 32, 41, 1);
+    transition: all 300ms linear;
+    z-index: 10;
+}
+
+/* Close buttons for additional sections */
+.travel-close,
+.wildlife-close,
+.nature-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    display: block;
+    overflow: hidden;
+    height: 30px;
+    transition: all 200ms linear;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 36px 36px;
+    background-image: url("http://www.ivang-design.com/svg-load/portfolio/close.svg");
+    cursor: pointer;
+    z-index: 11;
+}
+
+.travel-close:hover,
+.wildlife-close:hover,
+.nature-close:hover {
+    transform: rotate(90deg);
+}
+
+/* Display sections when corresponding body class is active */
+body.travel-on .travel-section,
+body.wildlife-on .wildlife-section,
+body.nature-on .nature-section {
+    top: 0;
+    transition-delay: 400ms;
+}
+
+/* Image styles for additional sections */
+.travel-section img,
+.wildlife-section img,
+.nature-section img {
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Heading styles for additional sections */
+.travel-section h3,
+.wildlife-section h3,
+.nature-section h3 {
+    font-size: 44px;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+/* Paragraph styles for additional sections */
+.travel-section p,
+.wildlife-section p,
+.nature-section p {
+    font-size: 14px;
+    line-height: 1.7;
+    letter-spacing: 1px;
+}
+
+.travel-section p span,
+.wildlife-section p span,
+.nature-section p span {
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #866baf;
+}
+
+/* Styles for portfolio link */
+.link-to-portfolio {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 200;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 3px;
+    background-position: center center;
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-image: url("https://assets.codepen.io/1462889/fcy.png");
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+    transition: opacity 0.2s, border-radius 0.2s, box-shadow 0.2s;
+    transition-timing-function: ease-out;
+}
+
+.link-to-portfolio:hover {
+    opacity: 0.8;
+    border-radius: 50%;
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* General section styles */
+section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Hero image styles */
+.hero {
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    max-width: 550px;
+    filter: contrast(90%);
+    pointer-events: none;
+}
+
+/* Swiper styles for slideshow */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Title animation styles */
+.title {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    letter-spacing: 0.3rem;
+    z-index: 5;
+    color: transparent;
+    background-position: 0 0;
+    animation: animated-text 20s linear infinite;
+}
+
+@keyframes animated-text {
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Styles for different title animations */
+.one, .five {
+    -webkit-text-stroke: 1px rgba(16, 104, 31, 0.8);
+    background: url(https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/e9d06cb6-2844-49ed-9bde-23d3364b9fa4);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.two, .three, .four, .six {
+    -webkit-text-stroke: 1px #fff;
+    background: url(https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/ba4edde6-822d-437a-88c2-f54392d7a56f);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+/* Swiper slide image styles */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+
+/* new */
+
+/* General styles for project section */
+.project-section {
+    margin: 50px 0;
+    padding: 20px;
+    background-color: #2b2c36;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.highlighted-text {
+    color: red;
+    font-weight: bold;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.project-intro {
+    font-size: 18px;
+    color: #ddd;
+    font-style: italic;
+}
+
+.project-card {
+    margin: 20px 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    padding-bottom: 75%; /* 4:3 Aspect Ratio */
+    background-color: #1f2029;
+}
+
+.project-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.project-image-wrapper:hover img {
+    transform: scale(1.1);
+    filter: brightness(80%);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.project-image-wrapper:hover .overlay {
+    opacity: 1;
+}
+
+.project-name {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.github-link {
+    text-align: center;
+    color: white;
+    font-size: large;
+    margin-top: 10px;
+}
+
+.github-link a {
+    color: #866baf;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.github-link a:hover {
+    color: #d4af37;
+}
+
+/* Media query for smaller devices */
+@media (max-width: 767px) {
+    .highlighted-text {
+        font-size: 1.5em;
+    }
+
+    .project-intro {
+        font-size: 16px;
+    }
+}
+
+
+
+/* skills */
+
+#wrapper {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    /*height: 80vh;
+    min-height:20em;*/
+    width:80%;
+    margin:0 auto;
+    
+  }
+  .innerdiv{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    outline: none;
+  }
+  svg {
+    width:100%
+  }
+  circle {
+    fill: none;
+    stroke-width: 3;
+    stroke: #24303a;
+  }
+  path {
+    fill: transparent;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  
+  #aPath {
+    stroke: #1ed5f6;
+  }
+  #bPath {
+    stroke: #f61ed5;
+  }
+  #gPath {
+    stroke: #d5f61e;
+  }
+  
+  text {
+    dominant-baseline: central;
+    text-anchor: middle;
+    font-size: 5px;
+    fill: Linen;
+  }
+  
+  @media only screen and (min-width:480px) {
+    #wrapper {
+    display: flex;
+    flex-direction:row;
+    height: 60vh;
+    min-height:20em;
+  }
+    p {
+      font-size:3vw;}
+  }
+  
+
+  /* Education */
+
+
+  
